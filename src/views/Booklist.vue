@@ -17,11 +17,7 @@
         data() {
             return {
                 search: '',
-                categories: [
-                    'love',
-                    'history',
-                    'adventure'
-                ]
+                categories: []
             }
         },
         computed: {

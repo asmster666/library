@@ -5,6 +5,7 @@
             <input 
                 type="email" 
                 :value="email" 
+                @input="email=$event.target.value"
                 class="inp1"
             />
         </label> <br>
@@ -13,10 +14,16 @@
             <input 
                 type="password"
                 :value="password" 
+                @input="password=$event.target.value"
                 class="inp2"
             />
         </label>
-        <button class="btn btn-primary" @click="$router.push({ name: 'Booklist' })">Sign in</button>
+        <button  
+            class="btn btn-primary" 
+            @click="$router.push({ name: 'Booklist' })"
+        >
+            Sign in
+        </button>
     </div>
 </template>
 
@@ -25,10 +32,24 @@
         name: 'Form',
         data() {
             return {
-                email: 'colfsdvawe@gmail.com',
-                password: 'Eve301'
+                email: '',
+                password: '',
+                isSubmit: false
             }
         },
+        watch: {
+            email: function(email) {
+                this.email = email
+            },
+            password: function(password) {
+                this.password = password
+            },
+            isSubmitted(email, password) {
+                if(email && password) {
+                    this.isSubmit = true
+                }
+            }
+        }
     }
 </script>
 

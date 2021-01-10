@@ -1,40 +1,41 @@
 <template>
-    <div class="tree">
-        <ul>
-            <li 
-                v-for="(category, index) in categories"
-                :key="index"
-                class="category"
-            >
-                <p>{{ category }}</p>
-                <div class="button_wrap">
-                    <button class="btn btn-primary">edit</button>
-                    <button class="btn btn-secondary">delete</button>
-                </div>
-            </li>
-        </ul>
-    </div>
+    <ul class="category_tree">
+        <li 
+            v-for="category in db.category"
+            :key="index=category.id"
+            class="category"
+        >
+            <h4>{{ category.name }}</h4>
+            <div class="button_wrap">
+                <button class="btn btn-primary">edit</button>
+                <button @click="$delete(this.category)" class="btn btn-secondary">delete</button>
+            </div>
+        </li>
+    </ul>
 </template>
 
 <script>
+    import json from '../../database.json'
 
     export default {
-        name: 'Tree',
+        name: 'Tree', 
+        props: {
+            category: String
+        },
         data() {
             return {
-                category: "Category",
-            }
+                db: Object.assign({}, json),
+                categories: []
+            } 
         },
-        computed: {
-            changeColor() {
-                return 'color: blue'
-            }
+        mounted() {
+            
         }
     }
 </script>
 
 <style lang="scss">
-    .tree {
+    .category_tree {
         width: 95%;
         height: auto;
         display: flex;
@@ -49,6 +50,9 @@
         justify-content: space-between;
         align-items: center;
         border: 1px solid black;
+    }
+    h4 {
+        margin-left: 3rem;
     }
     .button_wrap {
         width: 20%;

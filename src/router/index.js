@@ -15,7 +15,7 @@ const routes = [
     component: Booklist
   },
   {
-    path: '/list/:id',
+    path: '/card',
     name: 'CardPage',
     component: Card
   }

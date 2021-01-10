@@ -15,12 +15,14 @@
 </template>
 
 <script>
+    import json from '../../database.json'
 
     export default {
         name: 'Card',
         data() {
             return {
-                description: "description"
+                data: Object.assign({}, json),
+                description: "descr"
             }
         },
     }
@@ -28,7 +30,7 @@
 
 <style lang="scss" scoped>
     .card {
-        width: 25rem;
+        width: 20rem;
         height: 20rem;
         border: 0.1rem solid blue;
         background-color: beige;
@@ -43,7 +45,7 @@
         }
         h1 {
             color: blue;
-            font-weight: 800;    
+            font-weight: 600;    
         }
         .wrapper {
             display: flex;
