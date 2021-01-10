@@ -16,6 +16,7 @@
                 class="inp2"
             />
         </label>
+        <button class="btn btn-primary" @click="$router.push({ name: 'Booklist' })">Sign in</button>
     </div>
 </template>
 
@@ -33,8 +34,8 @@
 
 <style lang="scss">
     .form {
-        width: 20rem;
-        height: 10rem;
+        width: 25rem;
+        height: 14rem;
         border: 0.1rem solid black;
         background-color: lightblue;
         display: flex;
@@ -42,10 +43,14 @@
         justify-content: center;
         align-items: flex-start;
         padding-left: 2rem;
+        margin: 5rem auto;
     }
         label {
             width: 80%;
             display: flex;
             justify-content: space-between;
+        }
+        button {
+            margin: 1rem auto;
         }
 </style>

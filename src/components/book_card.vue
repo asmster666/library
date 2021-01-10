@@ -1,16 +1,21 @@
 <template>
     <div class="card">
-        <a>id/ISBN</a>
-        <h1>Name of Book</h1>
-        <div class="wrapper">
-            <p id="author">author</p>
-            <p id="categ">category</p>
-        </div>
-        <span>{{ description }}</span>
+        <router-link
+            :to="{ name: 'CardPage' }"
+        >
+            <a>id/ISBN</a>
+            <h1>Name of Book</h1>
+            <div class="wrapper">
+                <p id="author">author</p>
+                <p id="categ">category</p>
+            </div>
+            <span>{{ description }}</span>
+        </router-link>
     </div>
 </template>
 
 <script>
+
     export default {
         name: 'Card',
         data() {

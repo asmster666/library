@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div class="home">
     <Form />
   </div>
 </template>
@@ -14,3 +14,11 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+  .home {
+    width: 100%;
+    height: auto;
+    margin: 10rem auto;
+  }
+</style>
