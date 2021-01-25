@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/library_vue/'
+    publicPath: '/library/'
   }
