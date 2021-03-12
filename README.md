@@ -1,2 +1,2 @@
 
-vue library(external db.json): vue v3, vue router
+vue library(external db.json): vue v3, vue router, vuex

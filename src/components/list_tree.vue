@@ -9,7 +9,7 @@
             <div class="wrapper">
                 <div  
                     class="title"
-                    @click="showItem"
+                    @click="showGenres($event)"
                 >
                     <h3>{{ category.name }}</h3>
                 </div>
@@ -18,16 +18,15 @@
                     <button @click="deleteCategory($event)" class="btn btn-outline-warning">delete</button>
                 </div>
             </div>
-            <div 
-                class="subcategories"
-                ref='genre'
-            >
+            <div class="subcategories">
                 <ul>
                     <li 
-                        v-for="genre in category.genres" :key="genre.id"
+                        v-for="genre in category.genres" 
+                        :key="genre.id"
                         class="genre"
                     >
                         <div 
+                            @click="showBook($event)"
                             class="genre_wrap"
                         >
                             <h4>{{ genre.name }}</h4>
@@ -70,7 +69,7 @@
         name: 'Tree', 
         data() {
             return {
-                db: Object.assign({}, json)
+                db: Object.assign({}, json),
             } 
         },
         methods: {
@@ -79,10 +78,19 @@
                 console.log(item);
             },
 
-            showItem() {
-                let item = this.$refs.genre;
-                console.log(item);
-                item.classList.add('active');
+            showGenres(event) {
+                let parent = event.target.parentNode.parentNode;
+                let res_parent = parent.parentNode;
+                let sub_cat = res_parent.lastChild;
+                console.log(sub_cat);
+                sub_cat.style = "display: block";
+            },
+
+            showBook(event) {
+                let parent = event.target.parentNode.parentNode;
+                let books = parent.lastChild;
+                console.log(books);
+                books.style = "display: flex";
             },
 
             editField(event) {
@@ -127,6 +135,9 @@
         justify-content: space-between;
         align-items: center;
         border: 1px solid black;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
     }
     .subcategories {
         width: 90%;
@@ -160,6 +171,7 @@
         margin-left: -2.5rem;
         list-style: none;
         border: 1px solid black;
+        border-radius: 10px;
     }
     .genre_wrap {
         display: flex;
@@ -174,13 +186,19 @@
         height: auto;
         display: flex;
         background-color: pink;
+        border-radius: 10px;
+        padding-bottom: 1rem;
+        display: none;
     }
     .book {
         width: 100%;
         margin-left: -1.2rem;
         margin-top: 1rem;
         list-style: none;
+        padding: 1rem;
         display: flex;
+        border: 2px solid beige;
+        border-radius: 10px;
     }
     h5 {
         font-weight: bold;

@@ -41,7 +41,7 @@
     }
         input {
             width: 80%;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
             height: 3rem;
         }
 </style>

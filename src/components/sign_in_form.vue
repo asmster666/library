@@ -58,6 +58,7 @@
         width: 25rem;
         height: 14rem;
         border: 0.1rem solid black;
+        border-radius: 20px;
         background-color: lightblue;
         display: flex;
         flex-direction: column;
