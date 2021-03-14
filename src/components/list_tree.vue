@@ -41,9 +41,10 @@
                                     v-for="book in genre.books"
                                     :key="book.id"
                                     class="book"
-                                    @click="$router.push({ name: 'CardPage' })"
                                 >
-                                    <div>
+                                    <div
+                                        @click="$router.push({ name: 'CardPage' })"
+                                    >
                                         <h5>{{ book.name }}</h5>
                                         <div id="author">{{ book.author }}</div>
                                         <div id="isbn">{{ book.id }}</div>
@@ -68,6 +69,11 @@
 
     export default {
         name: 'Tree', 
+        props: {
+            validTrigger: {
+                type: Boolean
+            },
+        },
         data() {
             return {
                 db: Object.assign({}, json),
@@ -116,6 +122,7 @@
 
             deleteBook(event) {
                 let field = event.target.parentElement.parentNode;
+                console.log(field);
                 field.remove();
             }
         }

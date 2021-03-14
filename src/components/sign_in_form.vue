@@ -6,6 +6,7 @@
                 type="email" 
                 :value="email" 
                 @input="email=$event.target.value"
+                @change="validateLogin"
                 class="inp1"
             />
         </label> <br>
@@ -20,7 +21,7 @@
         </label>
         <button  
             class="btn btn-primary" 
-            @click="$router.push({ name: 'Booklist' })"
+            @click="validateForm($router.push({ name: 'Booklist' }))"
         >
             Sign in
         </button>
@@ -34,7 +35,35 @@
             return {
                 email: '',
                 password: '',
-                isSubmit: false
+                isSubmit: false,
+                validTriggerdata: false,
+            }
+        },
+        methods: {
+            validateLogin() {
+                let field_login = document.querySelector(".inp1");
+                let login_value = field_login.value;
+                if(login_value === "admin") {
+                    console.log("hey admin");
+                }
+            },
+            validateForm(action) {
+                let field_login = document.querySelector(".inp1");
+                let login_value = field_login.value;
+                let field_pasw = document.querySelector(".inp2");
+                let pasw_value = field_pasw.value;
+                if(login_value === "admin" && pasw_value === "admin1234") {
+                    console.log(pasw_value);
+                    if(this.validTriggerdata) {
+                        action;
+                    }
+                } 
+
+                if(pasw_value < 3) {
+                    field_login.style = 'background-color: red';
+                    field_pasw.style = 'background-color: red';
+                    console.log("Please write correct login/password");
+                }
             }
         },
         watch: {
