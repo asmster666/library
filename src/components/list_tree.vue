@@ -41,6 +41,7 @@
                                     v-for="book in genre.books"
                                     :key="book.id"
                                     class="book"
+                                    @click="$router.push({ name: 'CardPage' })"
                                 >
                                     <div>
                                         <h5>{{ book.name }}</h5>
@@ -70,33 +71,42 @@
         data() {
             return {
                 db: Object.assign({}, json),
+                card_data: {
+                    id: 123,
+                    name_of_book: 'bla-bla',
+                    author: 'bla-bla',
+                    category: 'bla-bla',
+                    description: 'bla-bla'
+                }
             } 
         },
         methods: {
             addToCategory(item) {
                 this.subcategories.push(item);
-                console.log(item);
             },
 
             showGenres(event) {
                 let parent = event.target.parentNode.parentNode;
                 let res_parent = parent.parentNode;
                 let sub_cat = res_parent.lastChild;
-                console.log(sub_cat);
                 sub_cat.style = "display: block";
             },
 
             showBook(event) {
                 let parent = event.target.parentNode.parentNode;
                 let books = parent.lastChild;
-                console.log(books);
                 books.style = "display: flex";
             },
 
             editField(event) {
                 let parent = event.target.parentNode.parentNode;
-                let kid = parent.firstChild;
-                console.log(kid);
+                let result = parent.firstChild;
+                result.setAttribute('contenteditable', true);
+                result.addEventListener('blur', (event) => {
+                    result.removeAttribute('contenteditable');
+                    result.removeEventListener('blur', event.target);
+                });
+                result.focus();
             },
 
             deleteCategory(event){

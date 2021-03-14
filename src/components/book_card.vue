@@ -3,20 +3,46 @@
         <router-link
             :to="{ name: 'CardPage' }"
         >
-            <a>id/ISBN</a>
-            <h1>Name of Book</h1>
-            <div class="wrapp">
-                <p id="authr">author</p>
-                <p id="categ">category</p>
+            <div :card_data="card_data">
+                <a>id/ISBN</a>
+                <h1>Name of Book</h1>
+                <div class="wrapp">
+                    <p id="authr">author</p>
+                    <p id="categ">category</p>
+                </div>
+                <div id="descr">description</div>
             </div>
-            <div id="descr">description</div>
         </router-link>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'Card'
+        name: 'Card',
+        props: {
+            card_data: {
+                id: {
+                    type: Number
+                },
+                name_of_book: {
+                    type: String
+                },
+                author: {
+                    type: String
+                },
+                category: {
+                    type: String
+                },
+                description: {
+                    type: String
+                },
+            }
+        },
+        methods: {
+            show() {
+                console.log(this.card_data);
+            }
+        }
     }
 </script>
 
