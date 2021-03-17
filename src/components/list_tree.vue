@@ -45,10 +45,10 @@
                                     <div
                                         @click="$router.push({ name: 'CardPage' })"
                                     >
-                                        <h5>{{ book.name }}</h5>
-                                        <div id="author">{{ book.author }}</div>
-                                        <div id="isbn">{{ book.id }}</div>
-                                        <p id="descr">{{ book.description }}</p>
+                                        <h5 :nameOfBook="book.name" >{{ book.name }}</h5>
+                                        <div id="author" :author="book.author" >{{ book.author }}</div>
+                                        <div id="isbn" :bookId="book.id" >{{ book.id }}</div>
+                                        <p id="descr" :description="book.description" >{{ book.description }}</p>
                                     </div>
                                     <div class="button_wrap2">
                                         <button @click="editField($event)" class="btn btn-outline-info">edit</button>
@@ -77,12 +77,12 @@
         data() {
             return {
                 db: Object.assign({}, json),
-                card_data: {
-                    id: 123,
-                    name_of_book: 'bla-bla',
-                    author: 'bla-bla',
-                    category: 'bla-bla',
-                    description: 'bla-bla'
+                cardData: {
+                    bookId: 0,
+                    nameOfBook: '',
+                    author: '',
+                    category: '',
+                    description: ''
                 }
             } 
         },

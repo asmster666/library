@@ -4,13 +4,13 @@
             :to="{ name: 'CardPage' }"
         >
             <div :card_data="card_data">
-                <a>id/ISBN</a>
-                <h1>Name of Book</h1>
+                <a>id/ISBN{{cardData.id}}</a>
+                <h1>Name of Book{{cardData.nameOfBook}}</h1>
                 <div class="wrapp">
-                    <p id="authr">author</p>
-                    <p id="categ">category</p>
+                    <p id="authr">author{{cardData.author}}</p>
+                    <p id="categ">category{{cardData.category}}</p>
                 </div>
-                <div id="descr">description</div>
+                <div id="descr">description{{cardData.description}}</div>
             </div>
         </router-link>
     </div>
@@ -20,11 +20,11 @@
     export default {
         name: 'Card',
         props: {
-            card_data: {
+            cardData: {
                 id: {
                     type: Number
                 },
-                name_of_book: {
+                nameOfBook: {
                     type: String
                 },
                 author: {
